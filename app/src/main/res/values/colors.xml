@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="biru">#00cef6</color>
+    <color name="ijo">#aff000</color>
+    <color name="oren">#f5901d</color>
+    <color name="birutua">#01aae8</color>
 </resources>
