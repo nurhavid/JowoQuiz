@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 /**
  * Created by ajou on 7/14/2016.
@@ -46,6 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public DataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 1);
+        SQLiteDatabase db=this.getWritableDatabase();
     }
 
     @Override
@@ -65,7 +67,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + COL_3_3 + " TEXT, "
                 + COL_3_4 + " INTEGER);");
         db.execSQL("CREATE TABLE " + TABLE_4_NAME+ " ("
-                + COL_4_1 + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP PRIMARY KEY, "
+                + COL_4_1 + " TIMESTAMP DEFAULT CURRENT_TIMESTAMP, "
                 + COL_4_2 + " TEXT NOT NULL, "
                 + COL_4_3 + " INTEGER NOT NULL, "
                 + COL_4_4 + " INTEGER NOT NULL, PRIMARY KEY ("
@@ -75,6 +77,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + COL_5_2 + " TEXT NOT NULL, "
                 + COL_5_3 + " TEXT NOT NULL, "
                 + COL_5_4 + " INTEGER NOT NULL);");
+
     }
 
     @Override
@@ -131,10 +134,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertDataHistory(int timestamp, String playerUsername, int score, int categoryId){
+    public boolean insertDataHistory(String playerUsername, int score, int categoryId){
         SQLiteDatabase db = this. getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL_4_1,timestamp);
         contentValues.put(COL_4_2,playerUsername);
         contentValues.put(COL_4_3,score);
         contentValues.put(COL_4_4,categoryId);

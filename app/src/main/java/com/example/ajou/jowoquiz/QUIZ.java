@@ -21,22 +21,21 @@ import java.util.ArrayList;
 
 public class QUIZ extends AppCompatActivity {
     HavidDialogFragment New_Allert = new HavidDialogFragment();
-    private static final int NUM_ROWS = 3;
-    private static final int NUM_COLS = 4;
     ArrayList<Question> listQuestion;
-    Button buttons[][] = new Button[NUM_ROWS][NUM_COLS];
     String email;
     String pass;
     int row;
     int col;
     int count=0;
     int score=0;
+    DataBaseHelper dbh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quiz);
         Intent intent = getIntent();
+        dbh=new DataBaseHelper(this);
 
         if (intent != null) {
             email = intent.getStringExtra("Send_mail");
@@ -97,7 +96,11 @@ public class QUIZ extends AppCompatActivity {
 
     public void Refresh(){
         if((count)==listQuestion.size()){
-            Log.d("fahmi",""+count);
+            if( dbh.insertDataHistory("ajou@gmail.com",score,(row+col)%2)){
+                Log.d("Fahmi", "Berhasil");
+            }else{
+                Log.d("Fahmi", "Gagal");
+            }
             New_Allert.show(getFragmentManager(),"Hello");
         }else{
             TextView newView = (TextView) findViewById(R.id.Quiz);
