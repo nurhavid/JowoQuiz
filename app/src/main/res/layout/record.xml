@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/biru"
+    android:layout_gravity="center"
+    android:gravity="center"
+    >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Records"
+        android:textColor="#ffffff"
+        android:textSize="40dp"
+        android:layout_margin="10dp"/>
+    <ImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:background="@drawable/girl_icon"
+        android:id="@+id/user_icon"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user_id"
+        android:text="ID: 12345"
+        android:textSize="12dp"
+        android:layout_margin="5dp"
+        android:textColor="#ffffff"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/level"
+        android:text="level: 1"
+        android:textSize="12dp"
+        android:layout_marginBottom="5dp"
+        android:textColor="#ffffff"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_margin="10dp">
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:background="#ffffff"
+            android:text="Experience"
+            android:textColor="@color/biru"
+            android:textSize="12dp"/>
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="20dp"
+            android:gravity="center"
+            android:background="@color/ijo"
+            android:text="History"
+            android:textColor="#ffffff"
+            android:textSize="12dp"/>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1,2"
+            android:padding="20dp"
+            >
+            <TableRow >
+                <TextView
+                    android:text="Time"
+                    android:textColor="@color/ijo"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="Score"
+                    android:textColor="@color/ijo"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <TableRow >
+                <TextView
+                    android:text="01/01/16 1:34PM"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="10"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <TableRow >
+                <TextView
+                    android:text="01/01/16 11:34AM"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="20"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <TableRow >
+                <TextView
+                    android:text="01/01/16 10:34AM"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="30"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+            </TableRow>
+            <TableRow >
+                <TextView
+                    android:text="31/12/15 8:34AM"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+                <TextView
+                    android:text="40"
+                    android:textColor="#ffffff"
+                    android:textSize="12dp"
+                    android:gravity="center"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+</LinearLayout>
