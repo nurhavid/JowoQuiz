@@ -61,9 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         TextView myTextView= (TextView) findViewById(R.id.text_1);
         myTextView.setText(email);
         TextView myTextView2= (TextView) findViewById(R.id.text_2);
@@ -99,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(View v) {
                            CallMe(FINAL_COL,FINAL_ROW);
                             Choose(FINAL_COL,FINAL_ROW);
+                            //Something();
+
                     }
                 });
                 tableRow.addView(button);
@@ -121,12 +120,13 @@ public class MainActivity extends AppCompatActivity {
             startActivityForResult(myIntent, 0);
        // }
     }
-/*
-    private void OnClick_R(View view){
+
+    private void Something(){
         Intent myIntent = new Intent(this, Rank.class);
         myIntent.putExtra("Send_mail", email);
         myIntent.putExtra("Send_pass", pass);
-    }*/
+        startActivityForResult(myIntent, 0);
+    }
 
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
