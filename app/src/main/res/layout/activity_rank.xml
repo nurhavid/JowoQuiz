@@ -12,7 +12,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="High Score"
+        android:text="Top 4 High Score"
         android:textColor="#ffffff"
         android:textSize="40dp"
         android:layout_margin="10dp"/>
@@ -36,7 +36,7 @@
                     android:gravity="center"
                     android:background="@color/ijo"/>
                 <TextView
-                    android:text="ID"
+                    android:text="Username"
                     android:textColor="@color/ijo"
                     android:textSize="12dp"
                     android:gravity="center"
@@ -50,7 +50,7 @@
                     android:textStyle="bold"
                     android:background="@color/ijo"/>
             </TableRow>
-            <TableRow >
+            <TableRow android:id="@+id/Row1">
                 <TextView
                     android:text="1"
                     android:textColor="#ffffff"
@@ -68,9 +68,9 @@
                     android:textColor="#ffffff"
                     android:textSize="12dp"
                     android:gravity="center"
-                    android:id="@+id/S2" />
+                    android:id="@+id/S1" />
             </TableRow>
-            <TableRow >
+            <TableRow android:id="@+id/Row2">
                 <TextView
                     android:text="2"
                     android:textColor="#ffffff"
@@ -81,14 +81,16 @@
                     android:text="23456"
                     android:textColor="@color/ijo"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/Id2" />
                 <TextView
                     android:text="30"
                     android:textColor="#ffffff"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/S2" />
             </TableRow>
-            <TableRow >
+            <TableRow android:id="@+id/Row3">
                 <TextView
                     android:text="3"
                     android:textColor="#ffffff"
@@ -99,14 +101,16 @@
                     android:text="34567"
                     android:textColor="@color/ijo"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/Id3" />
                 <TextView
                     android:text="20"
                     android:textColor="#ffffff"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/S3" />
             </TableRow>
-            <TableRow >
+            <TableRow android:id="@+id/Row4">
                 <TextView
                     android:text="4"
                     android:textColor="#ffffff"
@@ -117,12 +121,14 @@
                     android:text="45678"
                     android:textColor="@color/ijo"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/Id4" />
                 <TextView
                     android:text="10"
                     android:textColor="#ffffff"
                     android:textSize="12dp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:id="@+id/S4" />
             </TableRow>
         </TableLayout>
     </ScrollView>

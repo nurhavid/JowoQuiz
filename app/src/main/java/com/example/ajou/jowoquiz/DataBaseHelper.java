@@ -191,7 +191,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Ranking> getRanking(){
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("select "+COL_4_2+" ,SUM ("+COL_4_3+") as scr from "+TABLE_4_NAME+" group by "+COL_4_2, null);
+        Cursor cursor = db.rawQuery("select "+COL_4_2+" ,SUM ("+COL_4_3+") as scr from "+TABLE_4_NAME+" group by "+COL_4_2+ " ORDER BY scr", null);
         ArrayList<Ranking> result= new ArrayList<Ranking>();
         if (cursor.moveToFirst()){
             do{
