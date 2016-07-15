@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
+
+import java.util.ArrayList;
 
 /**
  * Created by ajou on 7/14/2016.
@@ -184,6 +187,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+TABLE_4_NAME, null);
         return cursor;
+    }
+
+    public ArrayList<Ranking> getRanking(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select "+COL_4_2+" ,SUM ("+COL_4_3+") as scr from "+TABLE_4_NAME+" group by "+COL_4_2, null);
+        ArrayList<Ranking> result= new ArrayList<Ranking>();
+        if (cursor.moveToFirst()){
+            do{
+                Ranking ranking=new Ranking(cursor.getString(0), Integer.parseInt(cursor.getString(1)));
+                result.add(ranking);
+            }while(cursor.moveToNext());
+        }
+        return result;
     }
 
     public Cursor getDataQuestion(){

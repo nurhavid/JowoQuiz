@@ -44,9 +44,10 @@ public class MainActivity extends AppCompatActivity {
         Button M_rank = (Button) findViewById(R.id.Rank);
         M_rank.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                Intent myIntent = new Intent(view.getContext(), QUIZ.class);
+                Intent myIntent = new Intent(view.getContext(),Rank.class);
                 myIntent.putExtra("Send_mail", email);
                 myIntent.putExtra("Send_pass", pass);
+                startActivity(myIntent);
                 //finish();
             }
 
@@ -121,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
        // }
     }
 
-    private void Something(){
+    private void RankActivity(View v){
         Intent myIntent = new Intent(this, Rank.class);
         myIntent.putExtra("Send_mail", email);
         myIntent.putExtra("Send_pass", pass);
