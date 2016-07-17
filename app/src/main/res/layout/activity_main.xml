@@ -8,5 +8,80 @@
     tools:context="com.example.ajou.jowoquiz.MainActivity">
 
     <include layout="@layout/content_main" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:background="@color/biru"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
 
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:text="Log Out"
+                android:id="@+id/log_out"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/text_1"
+                android:layout_alignEnd="@+id/text_1"
+                android:layout_column="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rank"
+                android:id="@+id/Rank"
+                android:layout_marginLeft="200dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignRight="@+id/tableforbutton"
+                android:layout_alignEnd="@+id/tableforbutton"
+                android:layout_column="15" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:id="@+id/text_1"
+            android:textSize="20dp"
+            android:layout_margin="10dp"
+            android:textColor="#ffffff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/level"
+            android:text="level"
+            android:textSize="20dp"
+            android:layout_margin="5dp"
+            android:textColor="#ffffff" />
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:gravity="center_horizontal"-->
+    <!--android:layout_height="wrap_content">-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Quiz1"-->
+        <!--android:id="@+id/N_quiz" />-->
+    <!--<Button-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Quiz2"-->
+    <!--android:id="@+id/N_quiz2" />-->
+    <!--<Button-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Quiz3"-->
+        <!--android:id="@+id/N_quiz3" />-->
+<!--</LinearLayout>-->
+
+    </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

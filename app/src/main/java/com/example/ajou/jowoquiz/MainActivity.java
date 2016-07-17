@@ -14,7 +14,9 @@ import android.support.v4.graphics.BitmapCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -62,12 +64,74 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        /*
+        Button quiz_1 = (Button) findViewById(R.id.N_quiz);
+        quiz_1.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                int row =0;
+                int col =0;
+                Intent myIntent = new Intent(getApplicationContext(), QUIZ.class);
+                myIntent.putExtra("Send_mail", email);
+                myIntent.putExtra("Send_pass", pass);
+                myIntent.putExtra("Send_row", row);
+                myIntent.putExtra("Send_col", col);
+                startActivityForResult(myIntent, 0);
+
+            }
+
+        });
+
+        Button quiz_2 = (Button) findViewById(R.id.N_quiz2);
+        quiz_2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                int row =0;
+                int col =1;
+                Intent myIntent = new Intent(getApplicationContext(), QUIZ.class);
+                myIntent.putExtra("Send_mail", email);
+                myIntent.putExtra("Send_pass", pass);
+                myIntent.putExtra("Send_row", row);
+                myIntent.putExtra("Send_col", col);
+                startActivityForResult(myIntent, 0);
+
+            }
+
+        });
+
+        Button quiz_3 = (Button) findViewById(R.id.N_quiz3);
+        quiz_3.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                int row =0;
+                int col =2;
+                Intent myIntent = new Intent(getApplicationContext(), QUIZ.class);
+                myIntent.putExtra("Send_mail", email);
+                myIntent.putExtra("Send_pass", pass);
+                myIntent.putExtra("Send_row", row);
+                myIntent.putExtra("Send_col", col);
+                startActivityForResult(myIntent, 0);
+
+            }
+
+        });*/
+
         TextView myTextView= (TextView) findViewById(R.id.text_1);
         myTextView.setText(email);
-        TextView myTextView2= (TextView) findViewById(R.id.text_2);
-       // myTextView2.setText(pass);
+             //populateButton();
 
-        populateButton();
+
+        GridView gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setAdapter(new ImageAdapter(this));
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(getApplicationContext(),""+position,Toast.LENGTH_SHORT).show();
+                Intent myIntent = new Intent(view.getContext(), QUIZ.class);
+                myIntent.putExtra("Send_mail", email);
+                myIntent.putExtra("Send_pass", pass);
+                myIntent.putExtra("Send_pos", position);
+                startActivity(myIntent);
+            }
+        });
 
     }
     private void populateButton(){
@@ -129,83 +193,83 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(myIntent, 0);
     }
 
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        for (int i=0;i<NUM_ROWS;i++){
-            for (int j=0; j<NUM_COLS;j++){
-                Button button = buttons[i][j];
-                lockButtonSizes();
-                int newWidth = button.getWidth();
-                int newHeight = button.getHeight();
-                if(i==0&&j==0){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic1_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }
-                if(i==0&&j==1){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic2_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==0&&j==2){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic3_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==0&j==3){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.animal_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                } if(i==1&&j==0){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate1_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }
-                if(i==1&&j==1){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate2_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==1&&j==2){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate3_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==1&&j==3){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.food_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }
-                if(i==2&&j==0){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basicgreeting_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }
-                if(i==2&&j==1){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.numbers_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==2&&j==2){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate2_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }if(i==2&&j==3){
-                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate3_icon);
-                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
-                    Resources resource = getResources();
-                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
-                }
-            }
-        }
-    }
+//    @Override
+//    public void onWindowFocusChanged(boolean hasFocus) {
+//        super.onWindowFocusChanged(hasFocus);
+//        for (int i=0;i<NUM_ROWS;i++){
+//            for (int j=0; j<NUM_COLS;j++){
+//                Button button = buttons[i][j];
+//                lockButtonSizes();
+//                int newWidth = button.getWidth();
+//                int newHeight = button.getHeight();
+//                if(i==0&&j==0){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic1_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }
+//                if(i==0&&j==1){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic2_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==0&&j==2){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basic3_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==0&j==3){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.animal_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                } if(i==1&&j==0){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate1_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }
+//                if(i==1&&j==1){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate2_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==1&&j==2){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate3_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==1&&j==3){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.food_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }
+//                if(i==2&&j==0){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.basicgreeting_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }
+//                if(i==2&&j==1){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.numbers_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==2&&j==2){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate2_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }if(i==2&&j==3){
+//                    Bitmap originalBitmap= BitmapFactory.decodeResource(getResources(), R.drawable.intermediate3_icon);
+//                    Bitmap scaleBitmap = Bitmap.createScaledBitmap(originalBitmap,newWidth,newHeight, true);
+//                    Resources resource = getResources();
+//                    button.setBackgroundDrawable(new BitmapDrawable(resource,scaleBitmap));
+//                }
+//            }
+//        }
+//    }
 
     private void lockButtonSizes(){
         for(int row =0;row < NUM_ROWS; row++){

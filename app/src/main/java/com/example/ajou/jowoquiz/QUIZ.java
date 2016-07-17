@@ -3,6 +3,7 @@ package com.example.ajou.jowoquiz;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class QUIZ extends AppCompatActivity {
     String pass;
     int row;
     int col;
+    int pos;
     int count=0;
     int score=0;
     DataBaseHelper dbh;
@@ -36,41 +38,31 @@ public class QUIZ extends AppCompatActivity {
         setContentView(R.layout.quiz);
         Intent intent = getIntent();
         dbh=new DataBaseHelper(this);
-
+        dbh.Insert1();
         if (intent != null) {
             email = intent.getStringExtra("Send_mail");
             pass = intent.getStringExtra("Send_pass");
-            row = intent.getIntExtra("Send_row",100);
-            col = intent.getIntExtra("Send_col",100);
+            pos = intent.getIntExtra("Send_pos",100);
+            //col = intent.getIntExtra("Send_col",100);
 
         }
       listQuestion=new ArrayList<Question>();
-        if ((row+col)%2==0){
-            listQuestion.add(new Question((row+col)%2, "kenthang", "potato",1));
-            listQuestion.add(new Question((row+col)%2, "tomat", "tomato",2));
-            listQuestion.add(new Question((row+col)%2, "brambang", "onion",3));
-            listQuestion.add(new Question((row+col)%2, "wortel", "carrot",4));
-            listQuestion.add(new Question((row+col)%2, "woh", "fruit",5));
-            listQuestion.add(new Question((row+col)%2, "apel", "apple",6));
-            listQuestion.add(new Question((row+col)%2, "gedhang", "banana",7));
-            listQuestion.add(new Question((row+col)%2, "jeruk", "orange",8));
-            listQuestion.add(new Question((row+col)%2, "susu", "milk",9));
-            listQuestion.add(new Question((row+col)%2, "kopi", "coffee",10));
+        if ((pos)==0){
+            for(int i=0; i<10;i++){
+                listQuestion.add(new Question(0,dbh.getAllQusetion().get(i).getQuestion(),dbh.getAllQusetion().get(i).getAnswer(),i+1));
+            }
+            TextView newView = (TextView) findViewById(R.id.Quiz);
+            newView.setText(listQuestion.get(count).question);
         }else{
-            listQuestion.add(new Question((row+col)%2, "wong lanang", "man",1));
-            listQuestion.add(new Question((row+col)%2, "wong wadon", "woman",2));
-            listQuestion.add(new Question((row+col)%2, "bojo lanang", "husband",3));
-            listQuestion.add(new Question((row+col)%2, "bojo wadon", "wife",4));
-            listQuestion.add(new Question((row+col)%2, "anak lanang", "boy",5));
-            listQuestion.add(new Question((row+col)%2, "anak wadon", "girl",6));
-            listQuestion.add(new Question((row+col)%2, "bapak", "father",7));
-            listQuestion.add(new Question((row+col)%2, "ibu", "mother",8));
-            listQuestion.add(new Question((row+col)%2, "sedulur lanang", "brother",9));
-            listQuestion.add(new Question((row+col)%2, "sedulur wadon", "sister",10));
+            for(int i=0; i<10;i++){
+                listQuestion.add(new Question(0,dbh.getAllQusetion().get(i+10).getQuestion(),dbh.getAllQusetion().get(i+10).getAnswer(),i+11));
+            }
+            TextView newView = (TextView) findViewById(R.id.Quiz);
+            newView.setText(listQuestion.get(count).question);
+
         }
 //
-        TextView newView = (TextView) findViewById(R.id.Quiz);
-        newView.setText(listQuestion.get(count).question);
+
 
     }
 

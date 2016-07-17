@@ -9,10 +9,8 @@ import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
-/**
- * Created by ajou on 7/14/2016.
- */
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "Game.db";
     public static final String TABLE_1_NAME = "LEVEL";
@@ -49,7 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
 
     public DataBaseHelper(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 2);
         SQLiteDatabase db=this.getWritableDatabase();
     }
 
@@ -80,6 +78,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 + COL_5_2 + " TEXT NOT NULL, "
                 + COL_5_3 + " TEXT NOT NULL, "
                 + COL_5_4 + " INTEGER NOT NULL);");
+       // Insert1();
 
     }
 
@@ -151,10 +150,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean insertDataQuestion(int id, String question, String answer, int categoryId){
+    public boolean insertDataQuestion(String question, String answer, int categoryId){
         SQLiteDatabase db = this. getWritableDatabase();
         ContentValues contentValues=new ContentValues();
-        contentValues.put(COL_5_1,id);
+        //contentValues.put(COL_5_1,id);
         contentValues.put(COL_5_2,question);
         contentValues.put(COL_5_3,answer);
         contentValues.put(COL_5_4,categoryId);
@@ -202,9 +201,65 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return result;
     }
 
+
     public Cursor getDataQuestion(){
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("select * from "+TABLE_5_NAME, null);
         return cursor;
     }
+
+    public String getDataQuestionA(){
+        String str="";
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_5_NAME, null);
+        if (cursor.moveToFirst()) {
+            str = cursor.getString(1);
+        }
+        return str;
+    }
+
+    public List<Question> getAllQusetion(){
+        List<Question> questionList= new ArrayList<Question>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("select * from "+TABLE_5_NAME, null);
+        if(cursor.moveToFirst()){
+            do{
+                Question question = new Question();
+                question.setId(Integer.parseInt(cursor.getString(0)));
+                question.setQuestion(cursor.getString(1));
+                question.setAnswer(cursor.getString(2));
+                question.setCategoryId(Integer.parseInt(cursor.getString(3)));
+                questionList.add(question);
+            }while(cursor.moveToNext());
+        }
+        return questionList;
+    }
+
+    public void Insert1(){
+        boolean ak;
+        insertDataQuestion("kenthang", "potato",1);
+        insertDataQuestion("tomat", "tomato",1);
+        insertDataQuestion("brambang", "onion",1);
+        insertDataQuestion("wortel", "carrot",1);
+        insertDataQuestion("woh", "fruit",1);
+        insertDataQuestion("apel", "apple",1);
+        insertDataQuestion("gedhang", "banana",1);
+        insertDataQuestion("jeruk", "orange",1);
+        insertDataQuestion("susu", "milk",1);
+        insertDataQuestion("kopi", "coffee",1);
+
+        insertDataQuestion("wong lanang", "man",1);
+        insertDataQuestion("wong wadon", "woman",1);
+        insertDataQuestion("bojo lanang", "husband",1);
+        insertDataQuestion("bojo wadon", "wife",1);
+        insertDataQuestion("anak lanang", "boy",1);
+        insertDataQuestion("anak wadon", "girl",1);
+        insertDataQuestion("bapak", "father",1);
+        insertDataQuestion("ibu", "mother",1);
+        insertDataQuestion( "sedulur lanang", "brother",1);
+        ak = insertDataQuestion("sedulur wadon", "sister",1);
+        Log.d("Havid", String.valueOf(ak));
+    }
+
+
 }
